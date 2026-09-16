@@ -1,0 +1,30 @@
+#__llm_page_translator_status {
+  all: initial;
+  position: fixed;
+  z-index: 2147483647;
+  right: 18px;
+  bottom: 18px;
+  max-width: min(360px, calc(100vw - 36px));
+  box-sizing: border-box;
+  padding: 9px 13px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.16);
+  color: #172033;
+  font: 500 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+#__llm_page_translator_status[data-hidden="true"] {
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+#__llm_page_translator_status[data-tone="error"] {
+  border-color: rgba(190, 18, 60, 0.24);
+  color: #9f1239;
+}

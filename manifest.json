@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "LLM Page Translator",
+  "version": "0.1.5",
+  "description": "Translate web pages in place with a configurable LLM provider.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "LLM Page Translator",
+    "default_popup": "src/popup/popup.html"
+  }
+}
