@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>Screenshot 1</title>
+    <link rel="stylesheet" href="../../src/popup/popup.css">
+    <style>
+      html, body { width: 100% !important; height: 100%; margin: 0; overflow: hidden; background: #dbe4f0; }
+      body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; }
+      .browser {
+        display: grid;
+        grid-template-rows: 54px 1fr;
+        width: 100%;
+        height: 100%;
+        background: #f5f7fb;
+      }
+      .chrome-bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 16px;
+        background: #e8edf5;
+        border-bottom: 1px solid #d0d5dd;
+      }
+      .dots span { display: inline-block; width: 10px; height: 10px; margin-right: 6px; border-radius: 50%; }
+      .dots span:nth-child(1) { background: #f97316; }
+      .dots span:nth-child(2) { background: #eab308; }
+      .dots span:nth-child(3) { background: #22c55e; }
+      .omnibox {
+        flex: 1;
+        height: 32px;
+        padding: 0 14px;
+        border-radius: 999px;
+        background: white;
+        color: #475467;
+        font-size: 13px;
+        line-height: 32px;
+      }
+      .page {
+        display: grid;
+        grid-template-columns: 1fr 422px;
+        min-height: 0;
+      }
+      article {
+        padding: 36px 48px 72px;
+        overflow: hidden;
+      }
+      article h1 { margin: 0 0 8px; font-size: 34px; }
+      article .meta { margin-bottom: 22px; color: #667085; font-size: 13px; }
+      article p { margin: 0 0 16px; color: #172033; font-size: 17px; line-height: 1.7; }
+      .popup-wrap {
+        padding: 18px 18px 18px 0;
+      }
+      .popup-wrap main {
+        height: 100%;
+        overflow: hidden;
+        border: 1px solid #e4e7ec;
+        border-radius: 16px;
+        background: #f5f7fb;
+        box-shadow: 0 18px 48px rgba(15, 23, 42, 0.16);
+      }
+      #__status {
+        position: fixed;
+        right: 452px;
+        bottom: 28px;
+        padding: 9px 13px;
+        border: 1px solid rgba(15, 23, 42, 0.12);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 8px 28px rgba(15, 23, 42, 0.16);
+        color: #172033;
+        font: 500 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="browser">
+      <div class="chrome-bar">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <div class="omnibox">en.wikipedia.org/wiki/Language</div>
+      </div>
+      <div class="page">
+        <article>
+          <h1>语言</h1>
+          <p class="meta">Language · 正在原位翻译</p>
+          <p>语言是结构化的沟通系统。它将声音、手势或文字组织成可共享的意义，让人能够交流想法、记忆和计划。</p>
+          <p>大多数自然语言同时具备词汇和语法。词汇提供可以指代事物的符号，语法则决定这些符号如何组合成更大的表达。</p>
+          <p>Writing systems make it possible to record speech across time. A page can keep headings, links, and buttons in place while only the readable text is replaced.</p>
+          <p>Machine translation works best when it preserves names, numbers, and the original tone, instead of rebuilding the layout from scratch.</p>
+        </article>
+        <div class="popup-wrap">
+          <main>
+            <header>
+              <div>
+                <h1>LLM 网页翻译</h1>
+                <p>原位替换网页文本</p>
+              </div>
+              <span id="statusBadge" data-tone="active">翻译中</span>
+            </header>
+            <section class="card manual-card">
+              <div class="manual-heading">
+                <div>
+                  <h2>主动翻译</h2>
+                  <p>粘贴单词或短文本</p>
+                </div>
+                <span id="manualWordCount">0 / 50 单词</span>
+              </div>
+              <textarea rows="3" placeholder="最多输入 50 个单词"></textarea>
+              <button class="primary manual-translate-button" type="button" disabled>翻译输入内容</button>
+            </section>
+            <section class="card">
+              <details class="model-settings">
+                <summary>
+                  <span>模型配置</span>
+                  <span class="model-summary">DeepSeek · deepseek-v4-flash</span>
+                </summary>
+              </details>
+              <div class="language-grid">
+                <label>
+                  <span>源语言</span>
+                  <select><option>自动检测</option></select>
+                </label>
+                <label>
+                  <span>目标语言</span>
+                  <select><option>简体中文</option></select>
+                </label>
+              </div>
+            </section>
+            <div class="actions">
+              <button class="primary" type="button">翻译当前页面</button>
+              <button type="button">停止</button>
+              <button type="button">恢复原文</button>
+            </div>
+            <p id="progress">已翻译 86 / 142</p>
+          </main>
+        </div>
+      </div>
+    </div>
+    <div id="__status">正在翻译 86/142</div>
+  </body>
+</html>

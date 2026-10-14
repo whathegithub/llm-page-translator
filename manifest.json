@@ -1,8 +1,14 @@
 {
   "manifest_version": 3,
   "name": "LLM Page Translator",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Translate web pages in place with a configurable LLM provider.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
   "permissions": [
     "storage",
     "activeTab",
@@ -18,6 +24,12 @@
   },
   "action": {
     "default_title": "LLM Page Translator",
-    "default_popup": "src/popup/popup.html"
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
   }
 }

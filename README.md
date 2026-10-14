@@ -26,6 +26,17 @@
 
 保存配置时，Chrome 会请求访问所填写 API 域名的权限。扩展不会预先申请访问所有模型服务的权限。
 
+## 打包发布
+
+生成商店图标、宣传图，并打出可上传到 Chrome 网上应用店的 ZIP：
+
+```powershell
+python scripts/generate_store_assets.py
+python scripts/pack.py
+```
+
+安装包在 `dist/llm-page-translator-<version>.zip`。上架文案、隐私政策、截图和后台填写说明见 `store/PUBLISH.md`。
+
 ## 常见服务配置
 
 | 服务 | 协议 | API 地址示例 | 模型示例 |

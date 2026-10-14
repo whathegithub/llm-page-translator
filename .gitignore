@@ -1,9 +1,5 @@
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS
+dist/
+__pycache__/
+*.pyc
 .DS_Store
 Thumbs.db
